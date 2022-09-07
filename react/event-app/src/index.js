@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import UserList from './components/userList';
 import NavBar from './components/navbar';
 import EventList from './components/events';
-import EventCalendar from './components/calendar';
+import MyCalendar from './components/calendar';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 var body = <UserList/>;
@@ -18,7 +18,7 @@ switch (window.location.pathname) {
     body =  <EventList/>;
     break;
   case "/calendar":
-    body =  <EventCalendar/>;
+    body =  <MyCalendar/>;
     break;
   default:
     break;

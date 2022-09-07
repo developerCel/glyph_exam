@@ -8,19 +8,25 @@ class UserList extends Component{
         users:[],
         show_add_user_modal: false,
         new_user_name: "",
+        succes_modal_flg: false,
     }
+    
+    componentDidMount(){
+        this.getAllUser();
+    }
+    componentDidUpdate(){
+        this.getAllUser();
+    }
+
     render(){
         
-        this.getAllUser();
 
         return(
-       <center>
-             <div className="table-div">
-                <div className="d-flex add-div"> 
-                    <div className="d-flex add-div">
-                        <button className="btn btn-primary" onClick={this.toggle_add_user_modal.bind(this)}>+ Add User</button>
-                    </div>
-                </div>
+       <div className="center-body">
+            <div className="d-flex add-div">
+                <button className="btn btn-primary" onClick={this.toggle_add_user_modal.bind(this)}>+ Add User</button>
+            </div>
+             <div>
                 <table className="table shadow-lg">
                     <thead className={"thead-dark"} key={"thead_user"}>
                         <tr key={"tr"}>
@@ -31,11 +37,11 @@ class UserList extends Component{
                     </thead>
                     <tbody key={"tbody_user"}>
                     {this.state.users.map(user => 
-                        <tr key={user.name+"_tr"}>
+                        <tr key={user.id+"_tr"}>
                             <td  key={user.id}> 
                                 <center>{user.id} </center>
                             </td>
-                            <td key={user.name}> 
+                            <td key={user.id+"_td_name"}> 
                                 <center>
                                     {user.name} 
                                 </center>
@@ -58,12 +64,38 @@ class UserList extends Component{
                         onChange={this.handleChange} placeholder="Enter Name"/>
                     </div>
                     <div className="btn-container">
-                            <button className={"btn btn-primary"} onClick={this.toggle_add_user_modal.bind(this)}>cancel</button>
-                            <button className={"btn btn-primary"} onClick={this.createUser.bind(this)}>confirm</button>
+                                <button className={"btn btn-primary"} onClick={this.createUser.bind(this)}>confirm</button>
+                                <button className={"btn btn-secondary"} onClick={this.toggle_add_user_modal.bind(this)}>cancel</button>
                     </div>
 
                 </Modal>
-       </center>
+                
+                <Modal
+                    className={"modal-add-success shadow-lg"}
+                    // isOpen={true}
+                    isOpen={this.state.succes_modal_flg}
+                    // onAfterOpen={afterOpenModal}
+                    contentLabel="Example Modal"
+                    ariaHideApp={false} 
+                >
+                    <div className="p-5 pb-0">
+                        <div className="alert alert-success" role="alert">
+                          <h2>User Created Successfully!</h2>
+                        </div>                        
+                    </div>
+                    <div className="user-list-btn-div p-5 pt-1">
+                        <button 
+                            className="btn btn-primary" 
+                            onClick={()=>{
+                                this.setState({
+                                    succes_modal_flg: false
+                                });
+                            }}>
+                            Confirm
+                        </button>
+                    </div>
+                </Modal>
+       </div>
         );
     }   
 
@@ -102,6 +134,9 @@ class UserList extends Component{
             console.log(result[0]);
             if(result[0]=="0"){
                 this.toggle_add_user_modal();
+                this.setState({
+                    succes_modal_flg: true
+                })
             }
           },
           (error) => {

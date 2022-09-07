@@ -128,10 +128,10 @@ function updateEvent(event_id, event_name, start_datetime, end_datetime, tag_use
                     
             var json = JSON.stringify(event_list).replaceAll("},","},\n");
             fs.writeFile('events.json', json, 'utf8', ()=>{
-                console.log('event updated successfully');
+                console.log('event updated successfully!');
             });
 
-            return `${event_list[index].name} updated successfully`;
+            return `0`;
         }
     }
 }
@@ -150,10 +150,10 @@ function deleteEvent(event_id) {
                 console.log('event deleted successfully');
             });
 
-            return `event deleted successfully.`;
+            return `0`;
         }
     }
-    return `0`;
+    return `something went wrong.`;
 }
 
 function insertNewUser(user_name) { // insert new user
@@ -178,13 +178,24 @@ function verifyNewEventValidity(start_datetime, end_datetime, event_id=0){
     for (let index = 0; index < event_list.length; index++) {
         const element = event_list[index];
         if(element.id != event_id){
+            //
             if(new Date(element.start_datetime) >= new Date(start_datetime) 
             && new Date(element.start_datetime) <= new Date(end_datetime)){ 
                 return `event overlaps with ${element.name} (${element.start_datetime} - ${element.end_datetime})!`;
             }
-    
+            //
             if(new Date(element.end_datetime) >= new Date(start_datetime) 
             && new Date(element.end_datetime) <= new Date(end_datetime)){ 
+                return `event overlaps with ${element.name} (${element.start_datetime} - ${element.end_datetime})!`;
+            }
+            //
+            if(new Date(element.start_datetime) <= new Date(start_datetime) 
+            && new Date(element.end_datetime) >= new Date(start_datetime)){ 
+                return `event overlaps with ${element.name} (${element.start_datetime} - ${element.end_datetime})!`;
+            }
+            //
+            if(new Date(element.start_datetime) <= new Date(end_datetime) 
+            && new Date(element.end_datetime) >= new Date(end_datetime)){ 
                 return `event overlaps with ${element.name} (${element.start_datetime} - ${element.end_datetime})!`;
             }
         }

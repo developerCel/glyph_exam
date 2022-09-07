@@ -9,25 +9,36 @@
     margin-right: 5rem;
     background-color: white;
 }
+.modal-add-success{
+    margin: 10rem;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+}
 .dropdown-menu{
     z-index: 0;
 }
 .tag-user{
+    display: inline-block;
     background-color: blue;
     border-radius: 25px;
     margin: 5px;
     color: white;
     font-weight: bold;
-    padding-right: 5px;
+    padding-right: 10px;
     padding-left: 10px;
 }
+
 .add-tag-btn{
+    display: inline-block;
     background-color: blue;
     border-radius: 25px;
     border: none;
     margin: 5px;
     color: white;
     font-weight: bold;
+    padding: 5px;
     padding-right: 15px;
     padding-left: 10px;
 }
@@ -43,6 +54,21 @@
     margin: 5px 0px 5px 5px;
     border-radius: 50%;
 }
+.btn-primary{
+    margin-right: 1rem;
+    width: 10em !important;
+}
+.btn-secondary{
+    margin-right: 1rem;
+    width: 10em !important;
+}
+.btn-danger{
+    margin-right: 1rem;
+    width: 10em !important;
+}
+.center-body{
+    margin: 5rem;
+}
 .add_button{
     width: 25px;
     height: 25px;
@@ -56,7 +82,7 @@
     border-radius: 50%;
 }
 .tag_div{
-    display: flex;
+    display: flexbox;
     background-color: lightgray;
     border-radius: 20px;
     margin-bottom: 5px;
@@ -78,6 +104,9 @@
 @media (max-width: 800px) {
     .table-div{
         width: 100%;
+    }
+    .center-body{
+         margin: 0rem;
     }
     .modal-add-event{
         margin: 0%;
