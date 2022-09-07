@@ -1,0 +1,91 @@
+.selectable-tr:hover{
+    background-color: #0084ff;
+    color: white;
+    cursor: pointer;
+}
+.modal-add-event{
+    margin: 2rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    background-color: white;
+}
+.dropdown-menu{
+    z-index: 0;
+}
+.tag-user{
+    background-color: blue;
+    border-radius: 25px;
+    margin: 5px;
+    color: white;
+    font-weight: bold;
+    padding-right: 5px;
+    padding-left: 10px;
+}
+.add-tag-btn{
+    background-color: blue;
+    border-radius: 25px;
+    border: none;
+    margin: 5px;
+    color: white;
+    font-weight: bold;
+    padding-right: 15px;
+    padding-left: 10px;
+}
+.tag-user-btn{
+    width: 25px;
+    height: 25px;
+    font-size: 12px;
+    background-color: rgb(255, 70, 70);
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 0px;
+    margin: 5px 0px 5px 5px;
+    border-radius: 50%;
+}
+.add_button{
+    width: 25px;
+    height: 25px;
+    font-size: 12px;
+    background-color: white;
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 0px;
+    margin: 5px 5px 5px 5px;
+    border-radius: 50%;
+}
+.tag_div{
+    display: flex;
+    background-color: lightgray;
+    border-radius: 20px;
+    margin-bottom: 5px;
+}
+.td-btn{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 70%;
+}
+.table-div{
+    width: 100%;
+    height: 30rem;
+    overflow-y: scroll;
+}
+.user-list-btn-div{
+    display: flex;
+    flex-direction: row-reverse;
+}
+@media (max-width: 800px) {
+    .table-div{
+        width: 100%;
+    }
+    .modal-add-event{
+        margin: 0%;
+        margin-top: 20%;
+        width: 100%;
+
+    }
+    .tag_div{
+        display: block;
+    }
+}
